@@ -1,0 +1,134 @@
+DROP TABLE IF EXISTS product CASCADE;
+DROP TABLE IF EXISTS Arrival_of_goods CASCADE;
+DROP TABLE IF EXISTS consumption_of_goods CASCADE;
+DROP TABLE IF EXISTS suppliers CASCADE;
+DROP TABLE IF EXISTS buyers CASCADE;
+DROP TABLE IF EXISTS store CASCADE;
+
+CREATE TABLE product(
+	Id SERIAL PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	packing INTEGER NOT NULL,
+	Material VARCHAR(100) NOT NULL,
+	size INTEGER 
+);
+
+CREATE TABLE suppliers(
+	Id SERIAL PRIMARY KEY,
+	credit INTEGER,
+	prepayment INTEGER,
+	Name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE buyers(
+	Id SERIAL PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	credit INTEGER,
+	prepayment INTEGER
+);
+CREATE TABLE store(
+	Id SERIAL PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Arrival_of_goods(
+	Id SERIAL PRIMARY KEY,
+	count VARCHAR(100) NOT NULL,
+	date TIMESTAMP NOT NULL,
+	price_for_shipping VARCHAR(100) NOT NULL,
+	price_for_tonne VARCHAR(20) NOT NULL,
+	Idproduct INTEGER REFERENCES product(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	Idsuppliers INTEGER REFERENCES suppliers(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	Idstore INTEGER REFERENCES store(Id) ON DELETE CASCADE ON UPDATE CASCADE
+	);
+
+CREATE TABLE consumption_of_goods(
+	Id SERIAL PRIMARY KEY,
+	count INTEGER NOT NULL,
+	date TIMESTAMP NOT NULL,
+	price_for_shipping INTEGER,
+	price_for_tonne INTEGER NOT NULL ,
+	Idproduct INTEGER REFERENCES product(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+	Idbuyers INTEGER REFERENCES buyers(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+    Idstore INTEGER REFERENCES store(Id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+INSERT INTO store(Name) VALUES('Zavod');
+
+INSERT INTO product(Name,packing,Material,size) VALUES('Peleta',10,'dub',6);
+INSERT INTO product(Name,packing,Material,size) VALUES('Peleta',15,'dub',8);
+INSERT INTO product(Name,packing,Material,size) VALUES('Peleta',15,'sosna',6);
+INSERT INTO product(Name,packing,Material,size) VALUES('Pini kay',1000,'dub',10);
+INSERT INTO product(Name,packing,Material,size) VALUES('Pini kay',15,'smes',10);
+INSERT INTO product(Name,packing,Material,size) VALUES('Peleta',1000,'dub',6);
+
+
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('Gazprom',3200,0);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('keepsolid',0,4200);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('readle',10000,0);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('One piece',9000,0);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('Zoro',23000,0);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('rangomas',0,22000);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('VATSAP',0,3330);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('Stariy lvov',3000,0);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('Vadim',4300,0);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('Sadik',0,9000);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('Denis Nemzov',0,2000);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('raptor',1200,8700);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('dasco',0,4000);
+INSERT INTO suppliers(Name,credit,prepayment) VALUES('Tovarisch',5200,0);
+
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Gazprom',3200,0);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('readle',6500,0);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Vasya pupkin',0,20000);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Sidorov',1200,0);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Vivi',3400,0);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Lufi OOO',0,900);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Razor',5100,0);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Zoro',5500,0);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Choper',3200,1200);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Sandgi',0,9000);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Lolita',0,8900);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Sondroma',0,700);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Retard',0,980);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Vapor',0,9800);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Donflamingo',0,7600);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Pomodoro',0,5000);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Politep',18500,0);
+INSERT INTO buyers(Name,credit,prepayment) VALUES('Vasya',3200,0);
+
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(10,'2016-8-10',250,3800,1,2);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(12,'2017-1-11',1000,3400,2,1);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(13,'2017-2-8',200,3500,3,6);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(11,'2017-2-22',220,3600,1,7);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(1,'2017-2-13',400,3000,6,8);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(25,'2017-2-16',500,3600,5,9);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(7,'2017-5-11',700,2900,4,14);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(20,'2017-8-10',320,2800,6,8);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(3,'2017-9-11',0,3500,4,9);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(12,'2017-10-20',280,3500,5,10);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(13,'2017-10-30',320,2900,5,2);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(11,'2017-11-2',380,3200,2,13);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(30,'2017-11-9',200,3300,3,10);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(2,'2017-11-30',190,3600,3,11);
+INSERT INTO Arrival_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idsuppliers) VALUES(7,'2017-12-2',200,3500,5,12);
+
+
+
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(10,'2016-8-10',250,3200,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(21,'2016-9-13',350,2900,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(1,'2016-9-21',1000,3100,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(2,'2016-12-10',900,3150,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(3,'2017-2-1',750,3600,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(9,'2017-3-4',300,3500,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(13,'2017-4-8',100,3350,1,1);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(17,'2017-5-11',0,3450,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(6,'2017-6-13',0,3200,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(13,'2017-7-10',1200,3200,1,1);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(5,'2017-8-1',3250,3250,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(20,'2017-8-19',1250,3750,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(25,'2018-1-1',2250,3700,1,1);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(2,'2018-1-10',4250,3600,1,2);
+INSERT INTO consumption_of_goods(count,date,price_for_shipping,price_for_tonne, Idproduct, Idbuyers) VALUES(18,'2018-2-3',1350,3900,2,1);
