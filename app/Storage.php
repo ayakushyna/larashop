@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Storage extends Model
 {
-    protected $table = 'store';
+    public function arrivals()
+    {
+        return $this->hasMany(Arrival::class);
+    }
+
+    public function departures()
+    {
+        return $this->hasMany(Departure::class);
+    }
 }

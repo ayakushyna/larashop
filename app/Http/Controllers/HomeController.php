@@ -21,8 +21,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin','employee', 'manager']);
         return view('homepage.index');
     }
+
+    /*
+  public function someAdminStuff(Request $request)
+  {
+    $request->user()->authorizeRoles('manager');
+    return view(‘some.view’);
+  }
+  */
 }

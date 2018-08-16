@@ -4,16 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Arrival extends Model
+class Departure extends Model
 {
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function supplier()
+    public function buyer()
     {
-        return $this->belongsTo(Supplier::class);
+        return $this->belongsTo(Buyer::class);
     }
 
     public function storage()
