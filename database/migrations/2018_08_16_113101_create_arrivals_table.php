@@ -18,9 +18,9 @@ class CreateArrivalsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->integer('supplier_id')->unsigned();
             $table->integer('storage_id')->unsigned();
-            $table->double('price per tonne')->unsigned();
+            $table->double('price_per_tonne')->unsigned();
             $table->double('tonnes')->unsigned();
-            $table->double('shipping cost')->unsigned();
+            $table->double('shipping_cost')->unsigned();
             $table->timestamps();
         });
     }

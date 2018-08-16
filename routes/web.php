@@ -30,3 +30,10 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/arrivals', 'ArrivalController@index');
+Route::get('/arrivals/create', 'ArrivalController@create');
+Route::post('/arrivals', 'ArrivalController@store');
+Route::get('/arrivals/{arrival}/edit', 'ArrivalController@edit');
+Route::post('/arrivals/{arrival}', 'ArrivalController@update');
+Route::delete('/arrivals/{arrival}', 'ArrivalController@destroy');

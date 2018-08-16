@@ -69,7 +69,8 @@
         </div>
         <!-- End Wrapper -->
         <!-- All Jquery -->
-        <script src="js/lib/jquery/jquery.min.js"></script>
+        <!--<script src="js/lib/jquery/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!-- Bootstrap tether Core JavaScript -->
         <script src="js/lib/bootstrap/js/popper.min.js"></script>
         <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>

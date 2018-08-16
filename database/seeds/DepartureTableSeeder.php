@@ -15,9 +15,10 @@ class DepartureTableSeeder extends Seeder
             'product_id' => rand(1,5),
             'buyer_id' => rand(1,10),
             'storage_id' => rand(1,2),
-            'price per tonne' => rand(1000,4000),
+            'price_per_tonne' => rand(1000,4000),
             'tonnes' => rand(1,10),
-            'shipping cost' => rand(500,1000),
+            'shipping_cost' => rand(500,1000),
+            'created_at' => now(),
         ]);
     }
 }
