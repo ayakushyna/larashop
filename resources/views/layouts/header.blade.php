@@ -7,10 +7,10 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="index.html">
                 <!-- Logo icon -->
-                <b><img src="images/logo.png" alt="homepage" class="dark-logo" /></b>
+                <b><img src="/images/logo.png" alt="homepage" class="dark-logo" /></b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
-                <span><img src="images/logo-text.png" alt="homepage" class="dark-logo" /></span>
+                <span><img src="/images/logo-text.png" alt="homepage" class="dark-logo" /></span>
             </a>
         </div>
         <!-- End Logo -->
@@ -22,7 +22,7 @@
 
                 <!-- Profile -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
+                    <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/images/users/5.jpg" alt="user" class="profile-pic" /></a>
                     <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                         <ul class="dropdown-user">
                             <li><a href="#"><i class="ti-user"></i> Profile</a></li>

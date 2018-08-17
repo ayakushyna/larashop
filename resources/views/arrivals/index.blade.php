@@ -10,28 +10,32 @@
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Product</th>
-                    <th>Supplier</th>
-                    <th>Storage</th>
-                    <th>Price per tonne, $</th>
-                    <th>Tonnes</th>
-                    <th>Shipping cost, $</th>
-                    <th>Date</th>
+                    <th>Продукт</th>
+                    <th>Поставщик</th>
+                    <th>Склад</th>
+                    <th>Цена за тонну, $</th>
+                    <th>Тонны</th>
+                    <th>Стоимость доставки, $</th>
+                    <th>Дата</th>
                 </tr>
                 </thead>
                 <tbody>
-                @for($i = 0; $i < count($arrivals) ; $i++)
+                @foreach($arrivals as $index => $arrival)
                 <tr>
-                    <td>{{ $i+1 }}</td>
-                    <td>{{ $arrivals[$i]->product->name }}</td>
-                    <td>{{ $arrivals[$i]->supplier->name }}</td>
-                    <td>{{ $arrivals[$i]->storage->name }}</td>
-                    <td>{{ $arrivals[$i]->price_per_tonne }}</td>
-                    <td>{{ $arrivals[$i]->tonnes }}</td>
-                    <td>{{ $arrivals[$i]->shipping_cost }}</td>
-                    <td>{{ $arrivals[$i]->created_at->toFormattedDateString() }}</td>
+                    <td>{{ $index+1 }}</td>
+                    <td>{{ $arrival->product->name }}</td>
+                    <td>
+                        <a href="/suppliers/{{ $arrival->supplier->id }}">
+                            {{ $arrival->supplier->name }}
+                        </a>
+                    </td>
+                    <td>{{ $arrival->storage->name }}</td>
+                    <td>{{ $arrival->price_per_tonne }}</td>
+                    <td>{{ $arrival->tonnes }}</td>
+                    <td>{{ $arrival->shipping_cost }}</td>
+                    <td>{{ $arrival->created_at->toFormattedDateString() }}</td>
                 </tr>
-                @endfor
+                @endforeach
                 </tbody>
             </table>
         </div>
