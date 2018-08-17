@@ -11,9 +11,17 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->insert([
-            'name' => str_random(10),
-            'material' => str_random(10),
-        ]);
+        $faker = new Faker\Generator();
+        $faker->addProvider(new Faker\Provider\Lorem($faker));
+        $faker->addProvider(new Faker\Provider\ru_Ru\Color($faker));
+
+        $limit = 5;
+
+        for ($i = 0; $i < $limit; $i++) {
+            DB::table('products')->insert([
+                'name' => $faker->word,
+                'material' => $faker->colorName,
+            ]);
+        }
     }
 }

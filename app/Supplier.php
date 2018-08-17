@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Supplier extends Model
 {
-    public function departures()
+    public function arrivals()
     {
-        return $this->hasMany(Departure::class);
+        return $this->hasMany(Arrival::class);
     }
 }

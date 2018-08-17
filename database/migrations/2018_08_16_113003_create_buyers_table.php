@@ -18,6 +18,9 @@ class CreateBuyersTable extends Migration
             $table->string('name');
             $table->double('credit');
             $table->double('prepayment');
+            $table->string('country');
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->timestamps();
         });
     }
