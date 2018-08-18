@@ -13,7 +13,7 @@ class DepartureTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        $limit = 10;
+        $limit = 40;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('departures')->insert([

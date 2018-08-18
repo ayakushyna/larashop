@@ -12,10 +12,9 @@ class BuyerTableSeeder extends Seeder
     public function run()
     {
         $faker = new Faker\Generator();
-        $faker->addProvider(new Faker\Provider\ru_Ru\Person($faker));
-        $faker->addProvider(new Faker\Provider\ru_Ru\Text($faker));
-        $faker->addProvider(new Faker\Provider\ru_Ru\Address($faker));
-        $faker->addProvider(new Faker\Provider\uk_UA\PhoneNumber($faker));
+        $faker->addProvider(new Faker\Provider\en_GB\Person($faker));
+        $faker->addProvider(new Faker\Provider\en_GB\Address($faker));
+        $faker->addProvider(new Faker\Provider\PhoneNumber($faker));
         $faker->addProvider(new Faker\Provider\Internet($faker));
 
         $limit = 10;

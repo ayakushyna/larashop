@@ -12,10 +12,10 @@ class StorageTableSeeder extends Seeder
     public function run()
     {
         DB::table('storages')->insert([
-            'name' => 'Склад1'
+            'name' => 'Storage1'
         ]);
         DB::table('storages')->insert([
-            'name' => 'Склад2',
+            'name' => 'Storage2',
         ]);
     }
 }

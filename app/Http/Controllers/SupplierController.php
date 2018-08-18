@@ -24,7 +24,7 @@ class SupplierController extends Controller
     public function update(Supplier $supplier)
     {
         $validator = Validator::make( request()->all(),[
-            'name' => 'required',
+            'name' => 'required|regex:/([A-Z][a-z]{2,} )([A-Z][a-z]{2,} )?([A-Z][a-z]{2,})/',
             'credit' => 'required',
             'prepayment' => 'required',
             'email' => [

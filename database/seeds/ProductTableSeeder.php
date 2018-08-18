@@ -13,7 +13,7 @@ class ProductTableSeeder extends Seeder
     {
         $faker = new Faker\Generator();
         $faker->addProvider(new Faker\Provider\Lorem($faker));
-        $faker->addProvider(new Faker\Provider\ru_Ru\Color($faker));
+        $faker->addProvider(new Faker\Provider\Color($faker));
 
         $limit = 5;
 
