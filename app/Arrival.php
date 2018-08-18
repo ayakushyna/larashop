@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Arrival extends Model
 {
@@ -19,5 +20,10 @@ class Arrival extends Model
     public function storage()
     {
         return $this->belongsTo(Storage::class);
+    }
+
+    public static function losses()
+    {
+        return static::sum(DB::raw('price_per_tonne * tonnes + shipping_cost'));
     }
 }

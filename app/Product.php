@@ -15,4 +15,20 @@ class Product extends Model
     {
         return $this->hasMany(Departure::class);
     }
+
+    public function soldTonnes()
+    {
+        return $this->departures()->sum('tonnes');
+    }
+
+    public static function percents()
+    {
+        return static::leftJoin('departures', 'products.id','=','departures.product_id')
+            ->selectRaw('products.name,
+            sum(departures.tonnes) as tonnes, 
+            round(sum(departures.tonnes)*100/(select sum(tonnes) from departures)) as percent')
+            ->groupBy('products.id')
+            ->orderBy('tonnes', 'desc')
+            ->get();
+    }
 }
