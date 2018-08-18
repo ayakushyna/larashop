@@ -6,17 +6,27 @@
             <h4 class="card-title">Data Table</h4>
             <h6 class="card-subtitle">Data table example</h6>
             <div class="table-responsive m-t-40">
-                <table id="myTable" class="table table-bordered table-striped">
+                <table id="example23" class="table table-bordered table-striped display nowrap table-hover" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>№</th>
-                        <th>ФИО</th>
-                        <th>Кредит, $</th>
-                        <th>Предоплата, $</th>
-                        <th>Количество поставок</th>
-                        <th>Страна</th>
+                        <th>Full Name</th>
+                        <th>Credit, $</th>
+                        <th>Prepayment, $</th>
+                        <th>Supplies amount</th>
+                        <th>Country</th>
                     </tr>
                     </thead>
+                    <tfoot>
+                    <tr>
+                        <th>№</th>
+                        <th>Full Name</th>
+                        <th>Credit, $</th>
+                        <th>Prepayment, $</th>
+                        <th>Supplies amount</th>
+                        <th>Country</th>
+                    </tr>
+                    </tfoot>
                     <tbody>
                     @foreach($suppliers as $index => $supplier)
                         <tr>

@@ -6,19 +6,31 @@
         <h4 class="card-title">Data Table</h4>
         <h6 class="card-subtitle">Data table example</h6>
         <div class="table-responsive m-t-40">
-            <table id="myTable" class="table table-bordered table-striped">
+            <table id="example23" class="table table-bordered table-striped display nowrap table-hover" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>Продукт</th>
-                    <th>Поставщик</th>
-                    <th>Склад</th>
-                    <th>Цена за тонну, $</th>
-                    <th>Тонны</th>
-                    <th>Стоимость доставки, $</th>
-                    <th>Дата</th>
+                    <th>Product</th>
+                    <th>Supplier</th>
+                    <th>Storage</th>
+                    <th>Price per tonne, $</th>
+                    <th>Tonnes</th>
+                    <th>Shipping cost, $</th>
+                    <th>Date</th>
                 </tr>
                 </thead>
+                <tfoot>
+                <tr>
+                    <th>№</th>
+                    <th>Product</th>
+                    <th>Supplier</th>
+                    <th>Storage</th>
+                    <th>Price per tonne, $</th>
+                    <th>Tonnes</th>
+                    <th>Shipping cost, $</th>
+                    <th>Date</th>
+                </tr>
+                </tfoot>
                 <tbody>
                 @foreach($arrivals as $index => $arrival)
                 <tr>
@@ -33,7 +45,7 @@
                     <td>{{ $arrival->price_per_tonne }}</td>
                     <td>{{ $arrival->tonnes }}</td>
                     <td>{{ $arrival->shipping_cost }}</td>
-                    <td>{{ $arrival->created_at->toFormattedDateString() }}</td>
+                    <td>{{ $arrival->created_at->toDateString() }}</td>
                 </tr>
                 @endforeach
                 </tbody>

@@ -49,7 +49,7 @@
             @include('layouts.leftsidebar')
             <!-- Page wrapper  -->
             <div class="page-wrapper">
-                @include('layouts.breadcrumb')
+                {{--@include('layouts.breadcrumb')--}}
 
                 @if (session()->has('flash_notification.success'))
                     <script>
@@ -59,7 +59,9 @@
                     </script>
                 @endif
                 <!-- Container fluid  -->
+                <div class="container-fluid">
                     @yield('content')
+                </div>
                 <!-- End Container fluid  -->
                 @include('layouts.footer')
             </div>
@@ -107,6 +109,16 @@
         <!-- scripit init-->
         <script src="/js/lib/sweetalert/sweetalert.init.js"></script>
         <script src="/js/custom.min.js"></script>
+
+        <script src="/js/lib/datatables/datatables.min.js"></script>
+        <script src="/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+        <script src="/js/lib/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script src="/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script src="/js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        <script src="/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+        <script src="/js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+        <script src="/js/lib/datatables/datatables-init.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>

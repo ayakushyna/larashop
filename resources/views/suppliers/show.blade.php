@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container-fluid">
         <!-- Start Page Content -->
         <div class="row">
             <!-- Column -->
@@ -19,7 +18,7 @@
                                 <dl>
                                     <dt>Email:</dt>
                                     <dd>{{ $supplier->email }}</dd>
-                                    <dt>Контактный номер:</dt>
+                                    <dt>Phone:</dt>
                                     <dd>{{ $supplier->phone }}</dd>
                                 </dl>
                                 <div class="clear"></div>
@@ -41,12 +40,12 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="settings" role="tabpanel">
                             <div class="card-body">
-                                <h3 class="card-title m-t-15">Person Info</h3>
+                                <h3 class="card-title m-t-15">Personal Info</h3>
                                 <hr>
                                 <form class="form-material" method="POST" action="/suppliers/{{ $supplier->id }}">
                                     @csrf
                                     <div class="form-group">
-                                        <label class="col-md-12 col-form-label" for="name">ФИО</label>
+                                        <label class="col-md-12 col-form-label" for="name">Full Name</label>
                                         <div class="col-md-12">
                                             <input type="text" value="{{ $supplier->name }}" class="form-control form-control-line" name="name" id="name" required>
                                         </div>
@@ -54,14 +53,14 @@
 
                                     <div class="row col-md-12" >
                                             <div class="form-group">
-                                                <label class="col-md-12 col-form-label" for="credit">Кредит, $</label>
+                                                <label class="col-md-12 col-form-label" for="credit">Credit, $</label>
                                                 <div class="col-md-12">
                                                     <input type="number" step="0.01" value="{{ $supplier->credit }}" class="form-control form-control-line" id="credit" name="credit" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-12 col-form-label" for="prepayment">Предоплата, $</label>
+                                                <label class="col-md-12 col-form-label" for="prepayment">Prepayment, $</label>
                                                 <div class="col-md-12">
                                                     <input type="number" step="0.01" value="{{ $supplier->prepayment }}" class="form-control form-control-line" id="prepayment" name="prepayment" required>
                                                 </div>
@@ -76,14 +75,14 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-12 col-form-label" for="phone">Контактный номер</label>
+                                        <label class="col-md-12 col-form-label" for="phone">Phone</label>
                                         <div class="col-md-12">
                                             <input type="text" value="{{ $supplier->phone }}" class="form-control form-control-line" name="phone" id="phone" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-12 col-form-label" for="country">Выберите страну</label>
+                                        <label class="col-md-12 col-form-label" for="country">Select Country</label>
                                         <div class="col-md-12">
                                             <select class="form-control form-control-line" name="country" id="country">
                                                 @foreach($countries as $country)
@@ -98,7 +97,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-success">Обновить</button>
+                                            <button class="btn btn-success">Update</button>
                                         </div>
                                     </div>
                                     @include('layouts.errors')
@@ -113,12 +112,12 @@
                                         <thead>
                                         <tr>
                                             <th>№</th>
-                                            <th>Продукт</th>
-                                            <th>Склад</th>
-                                            <th>Цена за тонну, $</th>
-                                            <th>Тонны</th>
-                                            <th>Стоимость доставки, $</th>
-                                            <th>Дата</th>
+                                            <th>Product</th>
+                                            <th>Storage</th>
+                                            <th>Price per tonne, $</th>
+                                            <th>Tonnes</th>
+                                            <th>Shipping cost, $</th>
+                                            <th>Date</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -130,7 +129,7 @@
                                                 <td>{{ $arrival->price_per_tonne }}</td>
                                                 <td>{{ $arrival->tonnes }}</td>
                                                 <td>{{ $arrival->shipping_cost }}</td>
-                                                <td>{{ $arrival->created_at->toFormattedDateString() }}</td>
+                                                <td>{{ $arrival->created_at->toDateString() }}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -143,7 +142,5 @@
             </div>
             <!-- Column -->
         </div>
-
         <!-- End PAge Content -->
-    </div>
-@endsection
+@endsection('content')

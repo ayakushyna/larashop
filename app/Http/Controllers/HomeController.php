@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Arrival;
+use App\Buyer;
+use App\Departure;
+use App\Product;
+use App\Storage;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +29,16 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['admin','employee', 'manager']);
-        return view('homepage.index');
+
+        $revenue = Departure::income() - Arrival::losses();
+
+        $sales = Departure::count();
+        $storages = Storage::count();
+        $customers = Buyer::count();
+
+        $products = Product::percents();
+
+        return view('homepage.index', compact(['revenue','sales','storages', 'customers','products']));
     }
 
     /*

@@ -14,34 +14,29 @@
                         <li><a href="index1.html">Analytics </a></li>
                     </ul>
                 </li>
-                <li class="nav-label">Charts</li>
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Charts</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="chart-flot.html">Flot</a></li>
-                        <li><a href="chart-morris.html">Morris</a></li>
-                        <li><a href="chart-chartjs.html">ChartJs</a></li>
-                        <li><a href="chart-chartist.html">Chartist </a></li>
-                        <li><a href="chart-amchart.html">AmChart</a></li>
-                        <li><a href="chart-echart.html">EChart</a></li>
-                        <li><a href="chart-sparkline.html">Sparkline</a></li>
-                        <li><a href="chart-peity.html">Peity</a></li>
-                    </ul>
-                </li>
-                <li class="nav-label">Features</li>
 
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-wpforms"></i><span class="hide-menu">Forms</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="form-basic.html">Basic Forms</a></li>
-                        <li><a href="form-layout.html">Form Layout</a></li>
-                        <li><a href="form-validation.html">Form Validation</a></li>
-                        <li><a href="form-editor.html">Editor</a></li>
-                        <li><a href="form-dropzone.html">Dropzone</a></li>
-                    </ul>
-                </li>
+                <li class="nav-label">Info</li>
+
                 <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu">Tables</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="table-bootstrap.html">Basic Tables</a></li>
-                        <li><a href="table-datatable.html">Data Tables</a></li>
+                        <li><a href="/arrivals">Arrivals</a></li>
+                        <li><a href="/suppliers">Suppliers</a></li>
+                        <li><a href="#">Departures</a></li>
+                        <li><a href="#">Buyers</a></li>
+                        <li><a href="#" class="has-arrow">Products  <span class="label label-rounded label-success">{{ count($products) }}</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                @foreach($products as $product)
+                                    <li><a href="#">{{ $product->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li><a href="#" class="has-arrow">Storages  <span class="label label-rounded label-warning">{{ count($storages) }}</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                @foreach($storages as $storage)
+                                    <li><a href="#">{{ $storage->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>

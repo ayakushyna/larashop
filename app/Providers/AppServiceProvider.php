@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Product;
+use App\Storage;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('layouts.leftsidebar', function ($view){
+            $products = Product::all();
+            $storages = Storage::all();
+
+            $view->with(compact(['products','storages']));
+        });
     }
 
     /**
