@@ -36,7 +36,7 @@ Route::get('/arrivals/create', 'ArrivalController@create');
 Route::post('/arrivals', 'ArrivalController@store');
 Route::get('/arrivals/{arrival}/edit', 'ArrivalController@edit');
 Route::post('/arrivals/{arrival}', 'ArrivalController@update');
-Route::post('/arrivals/{id}/delete', 'ArrivalController@destroy');
+Route::post('/arrivals/{id}/delete', 'ArrivalController@delete');
 
 Route::get('/suppliers', 'SupplierController@index');
 Route::get('/suppliers/create', 'SupplierController@create');

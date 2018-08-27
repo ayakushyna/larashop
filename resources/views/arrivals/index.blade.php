@@ -92,7 +92,7 @@
                         url: "/arrivals/" + arrivalId + "/delete",
                         method: "POST",
                         data: {
-                            "id": arrivalId,
+                            id: arrivalId,
                             _token: '{{csrf_token()}}'
                         },
                     success: function(response) {
