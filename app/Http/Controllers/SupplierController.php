@@ -11,6 +11,11 @@ use Illuminate\Validation\Rule;
 
 class SupplierController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         $suppliers = Supplier::all();
         return view('suppliers.index', compact('suppliers'));
