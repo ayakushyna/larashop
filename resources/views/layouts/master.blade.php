@@ -15,6 +15,8 @@
         <link href="/css/lib/sweetalert/sweetalert.css" rel="stylesheet">
         <!-- Bootstrap Core CSS -->
         <link href="/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- Custom CSS -->
 
         <link href="/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">

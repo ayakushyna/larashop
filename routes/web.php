@@ -36,11 +36,11 @@ Route::get('/arrivals/create', 'ArrivalController@create');
 Route::post('/arrivals', 'ArrivalController@store');
 Route::get('/arrivals/{arrival}/edit', 'ArrivalController@edit');
 Route::post('/arrivals/{arrival}', 'ArrivalController@update');
-Route::delete('/arrivals/{arrival}', 'ArrivalController@destroy');
+Route::post('/arrivals/{id}/delete', 'ArrivalController@destroy');
 
 Route::get('/suppliers', 'SupplierController@index');
 Route::get('/suppliers/create', 'SupplierController@create');
 Route::post('/suppliers', 'SupplierController@store');
 Route::get('/suppliers/{supplier}', 'SupplierController@show');
 Route::post('/suppliers/{supplier}', 'SupplierController@update');
-Route::get('/suppliers/{supplier}/delete', 'SupplierController@destroy');
+Route::post('/suppliers/{supplier}/delete', 'SupplierController@destroy');

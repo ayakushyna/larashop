@@ -38,6 +38,10 @@ $(document).ready(function() {
         });
     });
     $('#example23').DataTable({
+        "columnDefs": [{
+            "sortable": false,
+            "targets": -1
+        }],
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
