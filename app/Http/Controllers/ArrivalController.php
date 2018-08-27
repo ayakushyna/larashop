@@ -17,7 +17,12 @@ class ArrivalController extends Controller
         return view('arrivals.index', compact('arrivals'));
     }
 
-    public function delete(Request $request){
-        return Arrival::where('id',$request->id)->get()->first()->delete();
+    public function delete($arrival_id){
+        $arrival = Arrival::find($arrival_id);
+        if($arrival)
+        {
+            $arrival->delete();
+        }
+        return "SUCCESS!!!";
     }
 }

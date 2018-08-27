@@ -56,13 +56,13 @@
                         <div class="row sweetalert justify-content-center">
                             <div>
                                 <form action="">
-                                    <button class="sweet-prompt" value="{{ $arrival->id }}" title="Edit" data-toggle="tooltip" type="button" style="border: 0; background:0">
+                                    <button class="edit-arrival sweet-prompt" value="{{ $arrival->id }}" title="Edit" data-toggle="tooltip" type="button" style="border: 0; background:0">
                                         <span class="material-icons">&#xE254;</span>
                                     </button>
                                 </form>
                             </div>
                             <div>
-                                    <button class="sweet-confirm" value="{{ $arrival->id }}" title="Delete" data-toggle="tooltip" type="button" style="border: 0; background:0">
+                                    <button class="delete-arrival" onclick = "deleteArrival({{ $arrival->id }})" title="Delete" data-toggle="tooltip" type="button" style="border: 0; background:0">
                                         <span class="material-icons">&#xE872;</span>
                                     </button>
                             </div>
@@ -77,12 +77,8 @@
 </div>
 
     <script>
-        var elements = document.querySelectorAll('.sweet-confirm');
 
-        for(let i=0; i< elements.length; i++)
-        {
-            let id = this.value;
-            elements[i].onclick = function() {
+        function deleteArrival(arrivalId) {
                 swal({
                     title: "Are you sure to delete ?",
                     text: "You will not be able to recover this imaginary file !!",
@@ -93,27 +89,25 @@
                     closeOnConfirm: false
                 }, function () {
                     $.ajax({
-                        url: "/arrival/" + id + "/delete",
+                        url: "/arrivals/" + arrivalId + "/delete",
                         method: "POST",
                         data: {
-                            "_token": "{{ csrf_token() }}",
-                            id: id,
+                            "id": arrivalId,
+                            _token: '{{csrf_token()}}'
                         },
-                    })
-                        .done(function (data) {
+                    success: function(response) {
                             swal({
                                 title: "Deleted",
-                                text: "Member has been successfully deleted",
+                                text: response,
                                 type: "success"
                             }, function () {
                                 location.reload();
                             });
-                        })
-                        .error(function (data) {
-                            swal("Oops", "We couldn't connect to the server!", "error");
-                        });
-                });
-            }
+                        }, error: function(response){
+                            swal("Oops", "We couldn't connect to the server!", response);
+                        }
+                })
+            })
         }
     </script>
 @endsection('content')
