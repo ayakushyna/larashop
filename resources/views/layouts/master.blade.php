@@ -12,7 +12,7 @@
         <!-- Favicon icon -->
         <link rel="icon" href="https://www.freeiconspng.com/uploads/courses-icon-10.png">
         <title>Ela - Bootstrap Admin Dashboard Template</title>
-        <link href="/css/lib/sweetalert/sweetalert.css" rel="stylesheet">
+        <script src="/sweetalert2/dist/sweetalert2.all.min.js"></script>
         <!-- Bootstrap Core CSS -->
         <link href="/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
@@ -33,7 +33,7 @@
     <![endif]-->
     </head>
 
-    <body class="fix-header fix-sidebar">
+    <body class="fix-header fix-sidebar"
         <!-- Preloader - style you can find in spinners.css -->
         <div class="preloader">
             <svg class="circular" viewBox="25 25 50 50">

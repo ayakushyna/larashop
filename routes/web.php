@@ -34,7 +34,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/arrivals', 'ArrivalController@index');
 Route::get('/arrivals/create', 'ArrivalController@create');
 Route::post('/arrivals', 'ArrivalController@store');
-Route::get('/arrivals/{arrival}/edit', 'ArrivalController@edit');
 Route::post('/arrivals/{arrival}', 'ArrivalController@update');
 Route::post('/arrivals/{id}/delete', 'ArrivalController@delete');
 
@@ -43,4 +42,4 @@ Route::get('/suppliers/create', 'SupplierController@create');
 Route::post('/suppliers', 'SupplierController@store');
 Route::get('/suppliers/{supplier}', 'SupplierController@show');
 Route::post('/suppliers/{supplier}', 'SupplierController@update');
-Route::post('/suppliers/{supplier}/delete', 'SupplierController@destroy');
+Route::post('/suppliers/{supplier}/delete', 'SupplierController@delete');

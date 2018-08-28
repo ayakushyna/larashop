@@ -31,11 +31,11 @@ class UserTableSeeder extends Seeder
         $manager->save();
         $manager->roles()->attach($role_manager);
 
-        $employee = new User();
-        $employee->name = 'Storekeeper Name';
-        $employee->email = 'storekeeper@example.com';
-        $employee->password = bcrypt('secret');
-        $employee->save();
-        $employee->roles()->attach($role_storekeeper);
+        $storekeeper = new User();
+        $storekeeper->name = 'Storekeeper Name';
+        $storekeeper->email = 'storekeeper@example.com';
+        $storekeeper->password = bcrypt('secret');
+        $storekeeper->save();
+        $storekeeper->roles()->attach($role_storekeeper);
     }
 }
