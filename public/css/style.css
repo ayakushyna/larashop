@@ -1340,7 +1340,7 @@ ul.list-style-none li a:hover {
   color: #67757c;
 }
 .custom-select {
-  background: url("../../assets/images/custom-select.png") right 0.75rem center no-repeat;
+  background: url("/images/custom-select.png") right 0.75rem center no-repeat;
 }
 textarea {
   resize: none;
@@ -2348,11 +2348,11 @@ textarea {
   color: #ffffff;
 }
 .modal-dialog {
-  margin: 30px auto;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%) !important;
-  width: 70%;
+  position: absolute;
+  top: 50px;
+  margin-bottom: 50px;
+  left: 50px;
+  right: 50px;
 }
 .modal-header .close {
   font-size: 14px;
@@ -2361,6 +2361,7 @@ textarea {
 }
 .modal-content {
   border-radius: 3px;
+  overflow: auto;
 }
 .timeline {
   list-style: none;
@@ -5479,7 +5480,6 @@ tbody tr td:last-child {
   box-shadow: none;
 }
 .current-progressbar .progress-bar {
-  box-shadow: 0px;
   line-height: 14px;
   font-size: 11px;
   box-shadow: none;

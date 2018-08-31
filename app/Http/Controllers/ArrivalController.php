@@ -6,6 +6,7 @@ use App\Arrival;
 use App\Product;
 use App\Storage;
 use App\Supplier;
+use \Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class ArrivalController extends Controller
@@ -16,40 +17,64 @@ class ArrivalController extends Controller
     }
 
     public function index(){
-        $arrivals = Arrival::all();
+        $arrivals = Arrival::orderBy('id')->get();
         $products = Product::all();
         $suppliers = Supplier::all();
         $storages = Storage::all();
         return view('arrivals.index', compact(['arrivals','products','suppliers','storages']));
     }
 
-    public function update($arrival_id)
+    public function store()
     {
         $this->validate( request(),[
-            'price_per_tonne' => 'required',
-            'tonnes' => 'required',
-            'shipping_cost' => 'required'
+            'price_per_tonne' => 'required|numeric|min:0|max:1000000',
+            'tonnes' => 'required|numeric|min:0|max:1000000',
+            'shipping_cost' => 'required|numeric|min:0|max:1000000'
         ]);
 
-        Arrival::where('id',$arrival_id)->update([
-            'product_id' => request('product')->id,
-            'supplier_id' => request('supplier')->id,
-            'storage_id' => request('storage')->id,
+        Arrival::insert([
+            'product_id' => request('product'),
+            'supplier_id' => request('supplier'),
+            'storage_id' => request('storage'),
+            'price_per_tonne' => request('price_per_tonne'),
+            'tonnes' => request('tonnes'),
+            'shipping_cost' => request('shipping_cost'),
+            'created_at' => request('created_at'),
+        ]);
+
+        return response()->json(['success' => 'Successfully created!']);
+    }
+
+    public function update(Arrival $arrival)
+    {
+        $validator = Validator::make( request()->all(),[
+            'price_per_tonne' => 'required|numeric|min:0|max:1000000',
+            'tonnes' => 'required|numeric|min:0|max:1000000',
+            'shipping_cost' => 'required|numeric|min:0|max:1000000'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        }
+
+        Arrival::where('id', $arrival->id)->update([
+            'product_id' => request('product'),
+            'supplier_id' => request('supplier'),
+            'storage_id' => request('storage'),
             'price_per_tonne' => request('price_per_tonne'),
             'tonnes' => request('tonnes'),
             'shipping_cost' => request('shipping_cost'),
             'created_at' =>request('created_at'),
         ]);
 
-        return back();
+        return response()->json(['success' => 'Successfully edited!']);
     }
 
-    public function delete($arrival_id){
-        $arrival = Arrival::find($arrival_id);
+    public function delete(Arrival $arrival){
         if($arrival)
         {
             $arrival->delete();
         }
-        return "SUCCESS!!!";
+        return response()->json(['success' => "Successfully deleted!"]);
     }
 }

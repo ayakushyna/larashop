@@ -32,14 +32,12 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/arrivals', 'ArrivalController@index');
-Route::get('/arrivals/create', 'ArrivalController@create');
-Route::post('/arrivals', 'ArrivalController@store');
-Route::post('/arrivals/{arrival}', 'ArrivalController@update');
-Route::post('/arrivals/{id}/delete', 'ArrivalController@delete');
+Route::post('/arrivals', 'ArrivalController@store')->name('arrivals.store');
+Route::post('/arrivals/{arrival}', 'ArrivalController@update')->name('arrivals.update');
+Route::post('/arrivals/{arrival}/delete', 'ArrivalController@delete');
 
 Route::get('/suppliers', 'SupplierController@index');
-Route::get('/suppliers/create', 'SupplierController@create');
-Route::post('/suppliers', 'SupplierController@store');
+Route::post('/suppliers', 'SupplierController@store')->name('suppliers.store');
 Route::get('/suppliers/{supplier}', 'SupplierController@show');
-Route::post('/suppliers/{supplier}', 'SupplierController@update');
+Route::post('/suppliers/{supplier}', 'SupplierController@update')->name('suppliers.update');
 Route::post('/suppliers/{supplier}/delete', 'SupplierController@delete');

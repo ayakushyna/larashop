@@ -1,14 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-    @include("arrivals.modal")
+    @include("arrivals.create")
+    @include("arrivals.edit")
     <div class="card">
         <div class="card-body">
             <div class="row justify-content-between">
-                <div><h4 class="card-title">Data Table</h4></div>
-                <div>
-                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
-                </div>
+                <h4 class="card-title">Arrivals Table</h4>
+                <button type="button" class="btn btn-info add-new" data-toggle="modal" data-target="#myModal" title="Create"><i class="fa fa-plus" ></i> Add New</button>
             </div>
             <div class="table-responsive m-t-40">
                 <table id="example23" class="table table-bordered table-striped display nowrap table-hover" cellspacing="0" width="100%">
@@ -56,7 +55,7 @@
                             <td>
                                 <div class="row sweetalert justify-content-center">
                                     <div>
-                                        <button class="edit-arrival" onclick = "editArrival({{ $arrival->id }})" data-toggle="modal" data-target="#myModal" title="Edit" type="button" style="border: 0; background:0">
+                                        <button class="edit-arrival" data-toggle="modal" data-target="#myModal{{$arrival['id']}}" title="Edit" type="button" style="border: 0; background:0">
                                             <span class="material-icons">&#xE254;</span>
                                         </button>
                                     </div>
@@ -76,15 +75,8 @@
     </div>
 
     <script>
-        function editArrival(arrivalId) {
-            $('#myModal').modal({
-                keyboard: true,
-                show:true
-            })
-        }
-
         function deleteArrival(arrivalId) {
-            Swal({
+            swal({
                 title: "Are you sure to delete ?",
                 text: "You will not be able to recover this imaginary file !!",
                 type: "warning",
@@ -101,15 +93,15 @@
                         _token: '{{csrf_token()}}'
                     },
                     success: function(response) {
-                        Swal({
-                            title: "Deleted",
-                            text: response,
+                        swal({
+                            title: "Hey!",
+                            text: response.success,
                             type: "success"
                         }, function () {
                             location.reload();
                         });
                     }, error: function(response){
-                        Swal("Oops", "We couldn't connect to the server!", response);
+                        swal("Oops", "We couldn't connect to the server!", response);
                     }
                 })
             })
