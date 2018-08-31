@@ -21,19 +21,19 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="/arrivals">Arrivals</a></li>
                         <li><a href="/suppliers">Suppliers</a></li>
-                        <li><a href="#">Departures</a></li>
-                        <li><a href="#">Buyers</a></li>
+                        <li><a href="/departures">Departures</a></li>
+                        <li><a href="/buyers">Buyers</a></li>
                         <li><a href="#" class="has-arrow">Products  <span class="label label-rounded label-success">{{ count($products) }}</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 @foreach($products as $product)
-                                    <li><a href="#">{{ $product->name }}</a></li>
+                                    <li><a href="/products/{{$product['id']}}">{{ $product->name }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
                         <li><a href="#" class="has-arrow">Storages  <span class="label label-rounded label-warning">{{ count($storages) }}</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 @foreach($storages as $storage)
-                                    <li><a href="#">{{ $storage->name }}</a></li>
+                                    <li><a href="/storages/{{$storage['id']}}">{{ $storage->name }}</a></li>
                                 @endforeach
                             </ul>
                         </li>

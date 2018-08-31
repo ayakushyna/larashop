@@ -55,7 +55,7 @@
                             <td>
                                 <div class="row sweetalert justify-content-center">
                                     <div>
-                                        <button class="edit-arrival" data-toggle="modal" data-target="#myModal{{$arrival['id']}}" title="Edit" type="button" style="border: 0; background:0">
+                                        <button class="edit-arrival" data-toggle="modal" data-target="#edit-arrival{{$arrival['id']}}" title="Edit" type="button" style="border: 0; background:0">
                                             <span class="material-icons">&#xE254;</span>
                                         </button>
                                     </div>

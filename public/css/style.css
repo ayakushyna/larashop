@@ -1340,7 +1340,7 @@ ul.list-style-none li a:hover {
   color: #67757c;
 }
 .custom-select {
-  background: url("/images/custom-select.png") right 0.75rem center no-repeat;
+  background: url("./images/custom-select.png") right 0.75rem center no-repeat;
 }
 textarea {
   resize: none;

@@ -9,17 +9,17 @@
                 <div class="card-body">
                     <div class="card-two">
                         <header>
-                            <h3>{{ $supplier->name }}</h3>
+                            <h3>{{ $buyer->name }}</h3>
                         </header>
                         <div class="desc">
-                            {{ $supplier->country }}
+                            {{ $buyer->country }}
                         </div>
                         <div class="dl > dt desc">
                             <dl>
                                 <dt>Email:</dt>
-                                <dd>{{ $supplier->email }}</dd>
+                                <dd>{{ $buyer->email }}</dd>
                                 <dt>Phone:</dt>
-                                <dd>{{ $supplier->phone }}</dd>
+                                <dd>{{ $buyer->phone }}</dd>
                             </dl>
                             <div class="clear"></div>
                         </div>
@@ -35,7 +35,6 @@
                 <ul class="nav nav-tabs profile-tab" role="tablist">
                     <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">Timeline</a> </li>
                     <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#edit" role="tab">Edit</a> </li>
-
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -55,15 +54,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($supplier->arrivals as $index => $arrival)
+                                    @foreach($buyer->departures as $index => $departure)
                                         <tr>
                                             <td>{{ $index+1 }}</td>
-                                            <td>{{ $arrival->product->name }}</td>
-                                            <td>{{ $arrival->storage->name }}</td>
-                                            <td>{{ $arrival->price_per_tonne }}</td>
-                                            <td>{{ $arrival->tonnes }}</td>
-                                            <td>{{ $arrival->shipping_cost }}</td>
-                                            <td>{{ $arrival->created_at->toDateString() }}</td>
+                                            <td>{{ $departure->product->name }}</td>
+                                            <td>{{ $departure->storage->name }}</td>
+                                            <td>{{ $departure->price_per_tonne }}</td>
+                                            <td>{{ $departure->tonnes }}</td>
+                                            <td>{{ $departure->shipping_cost }}</td>
+                                            <td>{{ $departure->created_at->toDateString() }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -78,64 +77,63 @@
                             <hr>
                             <form class="form-material"
                                   method="POST"
-                                  {{--action="{{route('suppliers.update', ['supplier' => $supplier['id']])}}"--}}>
+                                    {{--action="{{route('suppliers.update', ['supplier' => $supplier['id']])}}"--}}>
                                 @csrf
                                 <div class="form-group col-md-6">
-                                    <label class="control-label" for="name">Full Name</label>
-                                    <input type="text" value="{{ $supplier->name }}" class="form-control form-control-line" name="name" id="name{{$supplier['id']}}" required>
+                                    <label class="control-label" for="name{{$buyer['id']}}">Full Name</label>
+                                    <input type="text" value="{{ $buyer->name }}" class="form-control form-control-line" name="name" id="name{{$buyer['id']}}" required>
                                     <span class="text-danger">
-                                        <strong id="name-error{{$supplier['id']}}"></strong>
+                                        <strong id="name-error{{$buyer['id']}}"></strong>
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="control-label" for="credit">Credit, $</label>
-                                    <input type="number" step="0.01" value="{{ $supplier->credit }}" class="form-control form-control-line" id="credit{{$supplier['id']}}" name="credit" required>
+                                    <label class="control-label" for="credit{{$buyer['id']}}">Credit, $</label>
+                                    <input type="number" step="0.01" value="{{ $buyer->credit }}" class="form-control form-control-line" id="credit{{$buyer['id']}}" name="credit" required>
                                     <span class="text-danger">
-                                        <strong id="credit-error{{$supplier['id']}}"></strong>
+                                        <strong id="credit-error{{$buyer['id']}}"></strong>
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="control-label" for="prepayment">Prepayment, $</label>
-                                    <input type="number" step="0.01" value="{{ $supplier->prepayment }}" class="form-control form-control-line" id="prepayment{{$supplier['id']}}" name="prepayment" required>
+                                    <label class="control-label" for="prepayment{{$buyer['id']}}">Prepayment, $</label>
+                                    <input type="number" step="0.01" value="{{ $buyer->prepayment }}" class="form-control form-control-line" id="prepayment{{$buyer['id']}}" name="prepayment" required>
                                     <span class="text-danger">
-                                        <strong id="prepayment-error{{$supplier['id']}}"></strong>
+                                        <strong id="prepayment-error{{$buyer['id']}}"></strong>
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="control-label" for="email">Email</label>
-                                    <input type="email" value="{{ $supplier->email }}" class="form-control form-control-line" name="email" id="email{{$supplier['id']}}" required>
+                                    <label class="control-label" for="email{{$buyer['id']}}">Email</label>
+                                    <input type="email" value="{{ $buyer->email }}" class="form-control form-control-line" name="email" id="email{{$buyer['id']}}" required>
                                     <span class="text-danger">
-                                        <strong id="email-error{{$supplier['id']}}"></strong>
+                                        <strong id="email-error{{$buyer['id']}}"></strong>
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="control-label" for="phone">Phone</label>
-                                    <input type="text" value="{{ $supplier->phone }}" class="form-control form-control-line" name="phone" id="phone{{$supplier['id']}}" required>
+                                    <label class="control-label" for="phone{{$buyer['id']}}">Phone</label>
+                                    <input type="text" value="{{ $buyer->phone }}" class="form-control form-control-line" name="phone" id="phone{{$buyer['id']}}" required>
                                     <span class="text-danger">
-                                        <strong id="phone-error{{$supplier['id']}}"></strong>
+                                        <strong id="phone-error{{$buyer['id']}}"></strong>
                                     </span>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="control-label" for="country">Select Country</label>
-                                    <select class="form-control form-control-line" name="country" id="country{{$supplier['id']}}">
+                                    <label class="control-label" for="country{{$buyer['id']}}">Select Country</label>
+                                    <select class="form-control form-control-line" name="country" id="country{{$buyer['id']}}">
                                         @foreach($countries as $country)
-                                            @if($country == $supplier->country)
+                                            @if($country == $buyer->country)
                                                 <option selected>{{ $country }}</option>
                                             @else <option>{{ $country }}</option>
                                             @endif
                                         @endforeach
                                     </select>
                                     <span class="text-danger">
-                                        <strong id="country-error{{$supplier['id']}}"></strong>
+                                        <strong id="country-error{{$buyer['id']}}"></strong>
                                     </span>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-success"  id="submit{{$supplier['id']}}" >Submit</button>
+                                        <button type="submit" class="btn btn-success"  id="submit{{$buyer['id']}}" >Submit</button>
                                     </div>
                                 </div>
-                                @include('layouts.errors')
                             </form>
                         </div>
                     </div>
@@ -144,6 +142,6 @@
         </div>
         <!-- Column -->
     </div>
-    @include('suppliers.editscript')
+    @include('buyers.editscript')
     <!-- End PAge Content -->
 @endsection('content')

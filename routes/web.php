@@ -36,8 +36,24 @@ Route::post('/arrivals', 'ArrivalController@store')->name('arrivals.store');
 Route::post('/arrivals/{arrival}', 'ArrivalController@update')->name('arrivals.update');
 Route::post('/arrivals/{arrival}/delete', 'ArrivalController@delete');
 
+Route::get('/departures', 'DepartureController@index');
+Route::post('/departures', 'DepartureController@store')->name('departures.store');
+Route::post('/departures/{departure}', 'DepartureController@update')->name('departures.update');
+Route::post('/departures/{departure}/delete', 'DepartureController@delete');
+
 Route::get('/suppliers', 'SupplierController@index');
 Route::post('/suppliers', 'SupplierController@store')->name('suppliers.store');
 Route::get('/suppliers/{supplier}', 'SupplierController@show');
 Route::post('/suppliers/{supplier}', 'SupplierController@update')->name('suppliers.update');
 Route::post('/suppliers/{supplier}/delete', 'SupplierController@delete');
+
+Route::get('/buyers', 'BuyerController@index');
+Route::post('/buyers', 'BuyerController@store')->name('buyers.store');
+Route::get('/buyers/{buyer}', 'BuyerController@show');
+Route::post('/buyers/{buyer}', 'BuyerController@update')->name('buyers.update');
+Route::post('/buyers/{buyer}/delete', 'BuyerController@delete');
+
+Route::get('/products/{product}', 'ProductController@show');
+Route::post('/products/{product}', 'ProductController@update')->name('products.update');
+
+Route::get('/storages/{storage}', 'StorageController@show');

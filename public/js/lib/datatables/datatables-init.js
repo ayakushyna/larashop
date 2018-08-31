@@ -37,6 +37,7 @@ $(document).ready(function() {
             });
         });
     });
+
     $('#example23').DataTable({
         "columnDefs": [{
             "sortable": false,
@@ -47,3 +48,25 @@ $(document).ready(function() {
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
+
+$('#example1').DataTable({
+    "columnDefs": [{
+        "sortable": false,
+        "targets": -1
+    }],
+    dom: 'Bfrtip',
+    buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+    ]
+});
+
+$('#example2').DataTable({
+    "columnDefs": [{
+        "sortable": false,
+        "targets": -1
+    }],
+    dom: 'Bfrtip',
+    buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+    ]
+});

@@ -21,6 +21,7 @@ class ProductTableSeeder extends Seeder
             DB::table('products')->insert([
                 'name' => $faker->word,
                 'material' => $faker->colorName,
+                'description' => $faker->text,
             ]);
         }
     }

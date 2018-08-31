@@ -26,11 +26,15 @@ class ArrivalController extends Controller
 
     public function store()
     {
-        $this->validate( request(),[
+        $validator = Validator::make( request()->all(),[
             'price_per_tonne' => 'required|numeric|min:0|max:1000000',
             'tonnes' => 'required|numeric|min:0|max:1000000',
             'shipping_cost' => 'required|numeric|min:0|max:1000000'
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors'=>$validator->errors()]);
+        }
 
         Arrival::insert([
             'product_id' => request('product'),

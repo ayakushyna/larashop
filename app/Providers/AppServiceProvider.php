@@ -16,8 +16,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('layouts.leftsidebar', function ($view){
-            $products = Product::all();
-            $storages = Storage::all();
+            $products = Product::orderBy('name')->get();
+            $storages = Storage::orderBy('name')->get();
 
             $view->with(compact(['products','storages']));
         });
