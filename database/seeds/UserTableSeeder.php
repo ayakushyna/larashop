@@ -37,5 +37,20 @@ class UserTableSeeder extends Seeder
         $storekeeper->password = bcrypt('secret');
         $storekeeper->save();
         $storekeeper->roles()->attach($role_storekeeper);
+
+        DB::connection('pgsqlAuth')->table('role_user')->insert([
+            'role_id' => Role::where('name','admin')->first()->id,
+            'user_id' => User::where('email','admin@example.com')->first()->id,
+        ]);
+
+        DB::connection('pgsqlAuth')->table('role_user')->insert([
+            'role_id' => Role::where('name','manager')->first()->id,
+            'user_id' => User::where('email','manager@example.com')->first()->id,
+        ]);
+
+        DB::connection('pgsqlAuth')->table('role_user')->insert([
+            'role_id' => Role::where('name','storekeeper')->first()->id,
+            'user_id' => User::where('email','storekeeper@example.com')->first()->id,
+        ]);
     }
 }

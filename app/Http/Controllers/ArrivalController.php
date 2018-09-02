@@ -21,6 +21,7 @@ class ArrivalController extends Controller
         $products = Product::all();
         $suppliers = Supplier::all();
         $storages = Storage::all();
+
         return view('arrivals.index', compact(['arrivals','products','suppliers','storages']));
     }
 

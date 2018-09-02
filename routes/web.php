@@ -57,3 +57,6 @@ Route::get('/products/{product}', 'ProductController@show');
 Route::post('/products/{product}', 'ProductController@update')->name('products.update');
 
 Route::get('/storages/{storage}', 'StorageController@show');
+Route::post('/storages', 'StorageController@store')->name('storage.store');
+Route::post('/storages/{storages}', 'StorageController@update')->name('storage.update');
+Route::post('/storages/{storages}/delete', 'StorageController@delete');

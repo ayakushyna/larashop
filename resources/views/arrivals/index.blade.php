@@ -1,7 +1,11 @@
+<?php
+    use App\Role;
+    $role = new Role();
+?>
 @extends('layouts.master')
-
 @section('content')
-    @include("arrivals.create")
+@if(Role::isAdmin() || Role::isManager())
+        @include("arrivals.create")
     @include("arrivals.edit")
     <div class="card">
         <div class="card-body">
@@ -107,5 +111,5 @@
             })
         }
     </script>
-
+@endif
 @endsection('content')
