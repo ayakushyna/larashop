@@ -21,7 +21,9 @@
                         <th>Tonnes</th>
                         <th>Shipping cost, $</th>
                         <th>Date</th>
-                        <th>Actions</th>
+                        @if(!\App\Role::isManager())
+                            <th>Actions</th>
+                        @endif
                     </tr>
                     </thead>
                     <tfoot>
@@ -34,7 +36,9 @@
                         <th>Tonnes</th>
                         <th>Shipping cost, $</th>
                         <th>Date</th>
-                        <th>Actions</th>
+                        @if(!\App\Role::isManager())
+                            <th>Actions</th>
+                        @endif
                     </tr>
                     </tfoot>
                     <tbody>
@@ -52,6 +56,7 @@
                             <td>{{ $departure->tonnes }}</td>
                             <td>{{ $departure->shipping_cost }}</td>
                             <td>{{ $departure->created_at->toDateString() }}</td>
+                            @if(!\App\Role::isManager())
                             <td>
                                 <div class="row sweetalert justify-content-center">
                                     <div>
@@ -66,6 +71,7 @@
                                     </div>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>
